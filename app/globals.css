@@ -1,26 +1,59 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --color-cream: #FAF6F0;
+  --color-navy: #004F6C;
+  --color-teal: #046C83;
+  --color-sky: #AEEBFC;
+  --color-sand: #F5E3D0;
+  --font-sans: var(--font-jakarta), var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-avaris: var(--font-wish-shore);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Shared keyframes & utilities */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(3deg); }
+}
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.05); }
+}
+@keyframes move-wave {
+  0% { transform: translate3d(-90px, 0, 0); }
+  100% { transform: translate3d(85px, 0, 0); }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@utility animate-fadeIn {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+@utility cert-teal-filter {
+  filter: brightness(0) saturate(100%) invert(33%) sepia(13%) saturate(1181%) hue-rotate(147deg) brightness(95%) contrast(91%);
+}
+
+.parallaxonde > use {
+  animation: move-wave 25s cubic-bezier(.55, .5, .45, .5) infinite;
+}
+.parallaxonde > use:nth-child(1) { animation-delay: -2s; animation-duration: 7s; }
+.parallaxonde > use:nth-child(2) { animation-delay: -3s; animation-duration: 10s; }
+.parallaxonde > use:nth-child(3) { animation-delay: -4s; animation-duration: 13s; }
+.parallaxonde > use:nth-child(4) { animation-delay: -5s; animation-duration: 20s; }
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-pulse-slow { animation: pulse-slow 8s ease-in-out infinite; }
+.animate-spin-slow { animation: spin-slow 20s linear infinite; }
+
+html {
+  scroll-behavior: smooth;
 }
