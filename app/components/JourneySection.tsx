@@ -1,80 +1,104 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Compass } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Recycle,
+  ShieldCheck,
+  X,
+} from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import iconCleaning from "../assets/images/cleaning.png";
 import iconCollection from "../assets/images/collection.png";
 import iconConsumption from "../assets/images/consumption.png";
 import iconFilling from "../assets/images/filling.png";
 import iconFiltration from "../assets/images/filtration.png";
 import iconPackaging from "../assets/images/packaging.png";
+import { useDictionary } from "./LocaleProvider";
 
-interface JourneyStep {
-  title: string;
-  desc: string;
-  accent: string;
-}
+// Ảnh icon cố định theo thứ tự bước 1..6 — phần chữ lấy từ từ điển
+const stepIconSources = [
+  iconCleaning,
+  iconFiltration,
+  iconFilling,
+  iconPackaging,
+  iconConsumption,
+  iconCollection,
+];
 
-const stepsData: Record<number, JourneyStep> = {
-  1: {
-    title: "Quy trình súc rửa 5 bước & khử trùng bằng tia UV",
-    desc: "Mỗi chai thủy tinh AVARIS sau khi thu hồi hoặc trước khi đi vào hệ thống chiết rót đều phải trải qua quy trình vệ sinh khép kín 5 bước nghiêm ngặt, kết hợp khử trùng bằng công nghệ tia cực tím UV tiên tiến. Điều này giúp loại bỏ hoàn toàn vi khuẩn và các tạp chất siêu nhỏ, mang lại sự tinh sạch tuyệt hảo.",
-    accent:
-      "Bảo vệ sức khỏe tuyệt đối - Đạt chứng nhận HACCP an toàn vệ sinh thực phẩm quốc tế.",
-  },
-  2: {
-    title: "Công nghệ lọc nước tiên tiến từ Mỹ",
-    desc: "Hệ thống lọc ứng dụng công nghệ thẩm thấu ngược RO tiên tiến bậc nhất từ Hoa Kỳ. Giúp loại bỏ hoàn toàn kim loại nặng, hóa chất tồn dư, muối hòa tan, chỉ giữ lại những phân tử nước tinh sạch nhất, mang lại hương vị mềm mại, ngọt nhẹ tự nhiên.",
-    accent:
-      "Kiểm soát chất lượng đạt tiêu chuẩn khắt khe bậc nhất từ FDA Hoa Kỳ.",
-  },
-  3: {
-    title: "Chiết rót tự động trong môi trường vô trùng",
-    desc: "Nước tinh khiết sau khi lọc được chuyển thẳng đến hệ thống chiết rót tự động khép kín hoàn toàn. Không gian chiết rót đạt cấp độ sạch tiêu chuẩn quốc tế, loại bỏ mọi nguy cơ tái nhiễm khuẩn từ không khí bên ngoài.",
-    accent:
-      "Công nghệ tự động hóa nâng cao tính đồng bộ và chất lượng tối ưu cho từng giọt nước.",
-  },
-  4: {
-    title: "Giao hàng đúng hạn đến đối tác",
-    desc: "Chúng tôi thấu hiểu thời gian là vàng ngọc đối với hoạt động của doanh nghiệp bạn. AVARIS xây dựng đội ngũ vận tải tận tâm cùng quy trình logistics hiện đại, cam kết giao nước đúng giờ, đúng hẹn trực tiếp đến khách sạn, nhà hàng, resort hoặc văn phòng của bạn.",
-    accent: "Dịch vụ cung ứng ổn định và hỗ trợ nhanh chóng khẩn cấp 24/7.",
-  },
-  5: {
-    title: "Trải nghiệm nước uống cao cấp",
-    desc: "Lần đầu tiên, việc uống nước không chỉ để giải khát mà trở thành một nghệ thuật thưởng thức đích thực. Thiết kế chai thủy tinh thanh nhã, giữ lạnh tối ưu mang lại sự mát lành sảng khoái tuyệt hảo cho từng cuộc hẹn hay bữa tiệc cao cấp.",
-    accent:
-      "Chiếc chai thanh lịch tô điểm thêm cho sự sang trọng nơi bàn tiệc hay phòng nghỉ khách sạn.",
-  },
-  6: {
-    title: "Thu hồi để tái sử dụng bền vững",
-    desc: "Sau khi sử dụng xong, vỏ chai thủy tinh sẽ được chúng tôi thu gom thông qua hệ thống quản lý chuyên nghiệp để rửa sạch và tái sản xuất tuần hoàn. Không một mảnh thủy tinh hay vỏ nhựa nào bị bỏ lại ngoài tự nhiên.",
-    accent:
-      "Thể hiện mạnh mẽ cam kết xanh bền vững và giảm thiểu tối đa áp lực ô nhiễm rác thải nhựa.",
-  },
-};
+const totalSteps = 6;
 
-const stepIcons: Record<number, { src: string; alt: string }> = {
-  1: { src: iconCleaning.src, alt: "Khử trùng & Súc rửa UV" },
-  2: { src: iconFiltration.src, alt: "Công nghệ lọc RO tiên tiến" },
-  3: { src: iconFilling.src, alt: "Chiết rót vô trùng" },
-  4: { src: iconPackaging.src, alt: "Giao hàng đúng hẹn" },
-  5: { src: iconConsumption.src, alt: "Trải nghiệm cao cấp" },
-  6: { src: iconCollection.src, alt: "Thu hồi & Tái sử dụng" },
+// Vòng lặp khép kín: qua khỏi bước 6 quay về bước 1 và ngược lại
+const wrapStep = (num: number) => ((num - 1 + totalSteps) % totalSteps) + 1;
+
+// Hướng hiển thị tooltip của từng bước, toả ra ngoài vòng tròn
+const tooltipPlacement: Record<number, string> = {
+  1: "left-full top-1/2 -translate-y-1/2 ml-3",
+  2: "top-full left-1/2 -translate-x-1/2 mt-3",
+  3: "top-full left-1/2 -translate-x-1/2 mt-3",
+  4: "right-full top-1/2 -translate-y-1/2 mr-3",
+  5: "bottom-full left-1/2 -translate-x-1/2 mb-3",
+  6: "bottom-full left-1/2 -translate-x-1/2 mb-3",
 };
 
 export default function JourneySection() {
-  const [activeStep, setActiveStep] = useState(1);
+  const dict = useDictionary();
+  const steps = dict.journey.steps;
+  const [selectedStep, setSelectedStep] = useState(1);
+  const [openStep, setOpenStep] = useState<number | null>(null);
   const [hoveredStep, setHoveredStep] = useState<number | null>(null);
-  const displayedStep = hoveredStep ?? activeStep;
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const isModalOpen = openStep !== null;
 
-  const handleStepClick = (num: number) => setActiveStep(num);
+  const goToStep = useCallback((num: number) => {
+    const step = wrapStep(num);
+    setSelectedStep(step);
+    setOpenStep(step);
+  }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    // Đảm bảo thuộc tính muted được thiết lập trước khi trình duyệt quyết định
+    // cho phép tự động phát, tránh bị chặn autoplay sau khi hydrate.
+    video.muted = true;
+    void video.play().catch(() => {});
+  }, []);
+
+  // Khoá cuộn nền và đưa focus vào nút đóng mỗi khi modal mở
+  useEffect(() => {
+    if (!isModalOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeButtonRef.current?.focus();
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isModalOpen]);
+
+  // Điều hướng modal bằng bàn phím: Esc để đóng, mũi tên trái/phải để chuyển bước
+  useEffect(() => {
+    if (!isModalOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpenStep(null);
+      else if (event.key === "ArrowLeft") goToStep((openStep ?? 1) - 1);
+      else if (event.key === "ArrowRight") goToStep((openStep ?? 1) + 1);
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isModalOpen, openStep, goToStep]);
 
   return (
     <section
       id="hanh-trinh"
-      className="py-24 bg-cream relative overflow-hidden"
+      className="py-24 bg-white relative overflow-hidden"
     >
       <div className="absolute -left-20 top-10 w-64 h-64 rounded-full bg-sky/15 blur-3xl" />
       <div className="absolute -right-20 bottom-10 w-64 h-64 rounded-full bg-sand/20 blur-3xl" />
@@ -82,28 +106,26 @@ export default function JourneySection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-xs font-extrabold tracking-widest text-teal uppercase">
-            VÒNG LẶP XANH HOÀN HẢO
+            {dict.journey.eyebrow}
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl font-bold text-navy mt-2">
-            Hành Trình Bền Vững Của Chai Thủy Tinh AVARIS
+            {dict.journey.title}
           </h2>
           <p className="text-gray-600 mt-4 text-sm sm:text-base">
-            Chúng tôi kiểm soát nghiêm ngặt từ khâu khử trùng vỏ chai đầu tiên
-            cho đến khi nước sạch tinh khiết tới tay khách hàng, và cuối cùng
-            thu hồi vỏ chai để tái sinh.
+            {dict.journey.intro}
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-6 flex justify-center">
+          <div className="lg:col-span-6 flex flex-col items-center order-2 lg:order-1">
             <div className="relative w-full max-w-112.5 aspect-square rounded-full flex items-center justify-center p-12">
-              <div className="text-center bg-white p-8 rounded-full shadow-xl border border-sand/50 z-10 max-w-50 aspect-square flex flex-col items-center justify-center">
-                <Compass className="w-10 h-10 text-teal" />
+              <div className="text-center bg-white p-8 rounded-full shadow-xl border border-sand/50 z-10 w-40 h-40 shrink-0 flex flex-col items-center justify-center">
+                <Recycle className="w-10 h-10 text-teal" />
                 <span className="font-avaris text-xl text-navy mt-2">
                   AVARIS
                 </span>
                 <span className="text-[10px] text-gray-400 font-semibold tracking-wider uppercase mt-1">
-                  SỨ MỆNH XANH
+                  {dict.journey.mission}
                 </span>
               </div>
 
@@ -114,37 +136,65 @@ export default function JourneySection() {
                 const x = Math.round(Math.cos(radian) * radius);
                 const y = Math.round(Math.sin(radian) * radius);
                 const scale =
-                  activeStep === num ? 1.25 : hoveredStep === num ? 1.1 : 1;
+                  selectedStep === num ? 1.25 : hoveredStep === num ? 1.1 : 1;
+                const isHovered = hoveredStep === num;
 
                 return (
-                  <button
+                  <div
                     key={num}
-                    onClick={() => handleStepClick(num)}
                     onMouseEnter={() => setHoveredStep(num)}
                     onMouseLeave={() => setHoveredStep(null)}
-                    className={`absolute w-20 h-20 rounded-full flex items-center justify-center transition-transform duration-300 z-20 ${
-                      activeStep === num
-                        ? "bg-navy shadow-xl ring-4 ring-sky"
-                        : hoveredStep === num
-                          ? "bg-teal shadow-lg ring-2 ring-teal/30"
-                          : "bg-white border-2 border-teal/20 shadow-md"
+                    className={`absolute transition-transform duration-300 ${
+                      isHovered
+                        ? "z-40"
+                        : selectedStep === num
+                          ? "z-30"
+                          : "z-20"
                     }`}
                     style={{
                       transform: `translate(${x}px, ${y}px) scale(${scale})`,
                     }}
                   >
-                    <Image
-                      src={stepIcons[num].src}
-                      alt={stepIcons[num].alt}
-                      width={48}
-                      height={48}
-                      className={`object-contain transition-all ${
-                        activeStep === num || hoveredStep === num
-                          ? "brightness-0 invert"
-                          : ""
+                    <button
+                      type="button"
+                      onClick={() => goToStep(num)}
+                      onFocus={() => setHoveredStep(num)}
+                      onBlur={() => setHoveredStep(null)}
+                      aria-haspopup="dialog"
+                      aria-label={`${dict.journey.stepWord} ${num}: ${steps[num - 1].title} — ${dict.journey.stepAriaSuffix}`}
+                      className={`w-20 h-20 rounded-full flex items-center justify-center cursor-pointer ${
+                        selectedStep === num
+                          ? "bg-navy shadow-xl ring-4 ring-sky"
+                          : isHovered
+                            ? "bg-teal shadow-lg ring-2 ring-teal/30"
+                            : "bg-white border-2 border-teal/20 shadow-md"
                       }`}
-                    />
-                  </button>
+                    >
+                      <Image
+                        src={stepIconSources[num - 1]}
+                        alt={dict.journey.stepAlts[num - 1]}
+                        width={48}
+                        height={48}
+                        className={`object-contain transition-all ${
+                          selectedStep === num || isHovered
+                            ? "brightness-0 invert"
+                            : ""
+                        }`}
+                      />
+                    </button>
+
+                    {isHovered && (
+                      <motion.span
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.15, ease: "easeOut" }}
+                        aria-hidden="true"
+                        className={`pointer-events-none absolute z-10 w-max max-w-44 rounded-xl bg-navy px-3 py-2 text-center text-[11px] font-semibold leading-snug text-white shadow-xl ${tooltipPlacement[num]}`}
+                      >
+                        {steps[num - 1].title}
+                      </motion.span>
+                    )}
+                  </div>
                 );
               })}
 
@@ -165,93 +215,138 @@ export default function JourneySection() {
             </div>
           </div>
 
-          <div className="lg:col-span-6 space-y-6">
-            <div
-              className={`bg-linear-to-br from-cream to-white p-8 rounded-3xl shadow-xl border relative h-105 sm:h-95 flex flex-col justify-between transition-all duration-300 ${
-                hoveredStep !== null
-                  ? "border-teal/30 shadow-2xl"
-                  : "border-navy/5"
-              }`}
+          <div className="lg:col-span-6 order-1 lg:order-2">
+            <div className="relative rounded-3xl overflow-hidden bg-navy shadow-2xl ring-1 ring-navy/10">
+              <video
+                ref={videoRef}
+                className="w-full aspect-video object-cover"
+                src="/videos/tvc.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label={dict.journey.videoAria}
+              >
+                {dict.journey.videoFallback}
+              </video>
+
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-navy/70 to-transparent" />
+              <span className="absolute bottom-4 left-5 text-[10px] font-extrabold tracking-widest text-white/80 uppercase">
+                {dict.journey.videoCaption}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <AnimatePresence>
+        {openStep !== null && (
+          <motion.div
+            className="fixed inset-0 z-100 flex items-center justify-center p-4 sm:p-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2, ease: "easeInOut" }}
+          >
+            <button
+              type="button"
+              aria-label={dict.journey.closeDetail}
+              onClick={() => setOpenStep(null)}
+              className="absolute inset-0 w-full h-full bg-navy/60 backdrop-blur-sm cursor-default"
+            />
+
+            <motion.div
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="journey-modal-title"
+              className="relative w-full max-w-2xl bg-linear-to-br from-cream to-white rounded-3xl shadow-2xl border border-sand/60 p-8 sm:p-10 max-h-[90vh] overflow-y-auto"
+              initial={{ opacity: 0, scale: 0.95, y: 24 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 24 }}
+              transition={{ duration: 0.25, ease: "easeInOut" }}
             >
-              <div className="absolute top-4 right-4 text-7xl font-black text-sky/20">{`0${displayedStep}`}</div>
+              <div className="absolute top-5 right-16 hidden sm:block text-6xl font-black text-sky/25 select-none pointer-events-none">{`0${openStep}`}</div>
 
-              {hoveredStep !== null && hoveredStep !== activeStep && (
-                <div className="absolute top-4 left-1/2 -translate-x-1/2 text-[10px] font-bold text-teal bg-sky/30 px-2 py-1 rounded-full uppercase tracking-wide animate-pulse-slow">
-                  Xem trước
-                </div>
-              )}
+              <button
+                ref={closeButtonRef}
+                type="button"
+                onClick={() => setOpenStep(null)}
+                aria-label={dict.journey.close}
+                className="absolute top-5 right-5 z-10 w-10 h-10 rounded-full bg-white border border-sand/70 shadow-md flex items-center justify-center text-navy hover:bg-teal hover:text-white hover:border-teal transition-colors cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
 
-              <div className="space-y-4 overflow-y-auto flex-1">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={displayedStep}
-                    initial={{ opacity: 0, x: 30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -30 }}
-                    transition={{ duration: 0.25, ease: "easeInOut" }}
-                  >
-                    <div className="inline-flex items-center justify-center p-3 rounded-2xl bg-teal/10 mb-2">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={openStep}
+                  initial={{ opacity: 0, x: 24 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -24 }}
+                  transition={{ duration: 0.2, ease: "easeInOut" }}
+                >
+                  <div className="flex items-center gap-4 mb-5 pr-16 sm:pr-36">
+                    <div className="shrink-0 p-3 rounded-2xl bg-teal/10">
                       <Image
-                        src={stepIcons[displayedStep].src}
-                        alt={stepIcons[displayedStep].alt}
+                        src={stepIconSources[openStep - 1]}
+                        alt={dict.journey.stepAlts[openStep - 1]}
                         width={40}
                         height={40}
                         className="object-contain"
                       />
                     </div>
-                    <h3 className="font-serif text-2xl font-bold text-navy">
-                      {stepsData[displayedStep].title}
-                    </h3>
-                    <p className="text-gray-600 text-base leading-relaxed">
-                      {stepsData[displayedStep].desc}
+                    <div>
+                      <span className="text-[10px] font-extrabold tracking-widest text-teal uppercase">
+                        {`${dict.journey.stepWord} 0${openStep}/0${totalSteps}`}
+                      </span>
+                      <h3
+                        id="journey-modal-title"
+                        className="font-serif text-2xl font-bold text-navy"
+                      >
+                        {steps[openStep - 1].title}
+                      </h3>
+                    </div>
+                  </div>
+
+                  <p className="text-gray-600 text-base leading-relaxed">
+                    {steps[openStep - 1].desc}
+                  </p>
+
+                  <div className="mt-6 flex items-start gap-3 rounded-2xl bg-white border border-sand/70 p-4">
+                    <ShieldCheck className="w-5 h-5 text-teal shrink-0 mt-0.5" />
+                    <p className="text-sm font-semibold text-navy">
+                      {steps[openStep - 1].accent}
                     </p>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
 
-              <div className="flex items-center space-x-2 pt-6 border-t border-sand/50 mt-6">
-                {[1, 2, 3, 4, 5, 6].map((s) => (
-                  <button
-                    key={s}
-                    onClick={() => handleStepClick(s)}
-                    onMouseEnter={() => setHoveredStep(s)}
-                    onMouseLeave={() => setHoveredStep(null)}
-                    className={`h-2.5 rounded-full transition-all duration-300 ${
-                      activeStep === s
-                        ? "w-10 bg-navy"
-                        : hoveredStep === s
-                          ? "w-6 bg-teal/60"
-                          : "w-2.5 bg-gray-200"
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
+              <div className="mt-8 pt-6 border-t border-sand/60 flex items-center justify-between gap-3">
+                <button
+                  type="button"
+                  onClick={() => goToStep(openStep - 1)}
+                  aria-label={`${dict.journey.prev}: ${steps[wrapStep(openStep - 1) - 1].title}`}
+                  className="inline-flex items-center gap-2 rounded-full border border-teal/25 bg-white px-4 py-2.5 text-xs font-bold text-teal shadow-sm hover:bg-teal hover:text-white hover:border-teal transition-colors cursor-pointer"
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                  {dict.journey.prev}
+                </button>
 
-            <div className="flex justify-between items-center px-2">
-              <button
-                onClick={() =>
-                  setActiveStep(activeStep === 1 ? 6 : activeStep - 1)
-                }
-                className="px-4 py-2 text-xs font-bold text-teal hover:text-navy flex items-center gap-1 transition-colors"
-              >
-                ← Bước Trước
-              </button>
-              <span className="text-xs text-gray-400 font-semibold">
-                Bấm số trên vòng tròn để chuyển nhanh
-              </span>
-              <button
-                onClick={() =>
-                  setActiveStep(activeStep === 6 ? 1 : activeStep + 1)
-                }
-                className="px-4 py-2 text-xs font-bold text-teal hover:text-navy flex items-center gap-1 transition-colors"
-              >
-                Bước Tiếp →
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+                <button
+                  type="button"
+                  onClick={() => goToStep(openStep + 1)}
+                  aria-label={`${dict.journey.next}: ${steps[wrapStep(openStep + 1) - 1].title}`}
+                  className="inline-flex items-center gap-2 rounded-full border border-teal/25 bg-white px-4 py-2.5 text-xs font-bold text-teal shadow-sm hover:bg-teal hover:text-white hover:border-teal transition-colors cursor-pointer"
+                >
+                  {dict.journey.next}
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

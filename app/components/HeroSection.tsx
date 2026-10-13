@@ -4,8 +4,10 @@ import { useScroll, useTransform, motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import heroBg from "../assets/images/hero.jpg";
+import { useDictionary } from "./LocaleProvider";
 
 export default function HeroSection() {
+  const dict = useDictionary();
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 1000], [0, 300]);
 
@@ -15,13 +17,15 @@ export default function HeroSection() {
         <motion.div className="absolute inset-0" style={{ y, scale: 1.05 }}>
           <Image
             src={heroBg}
-            alt="Chai thủy tinh AVARIS 450ml - Nước tinh khiết cao cấp"
+            alt={dict.hero.imageAlt}
             fill
             sizes="100vw"
             className="object-cover object-center opacity-85"
           />
         </motion.div>
         <div className="absolute inset-0 bg-linear-to-r from-navy/40 via-white/10 to-cream/95" />
+        {/* Lớp phủ trắng: giữ ảnh nền bên trái, làm nhạt dần về bên phải để nội dung nổi bật */}
+        <div className="absolute inset-0 bg-white/45 lg:bg-transparent lg:bg-linear-to-r lg:from-transparent lg:from-15% lg:via-white/55 lg:via-55% lg:to-white/85" />
       </div>
 
       <div className="absolute top-1/4 left-[8%] w-6 h-6 rounded-full bg-sky/40 animate-float opacity-70" />
@@ -33,11 +37,10 @@ export default function HeroSection() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          <div className="lg:col-start-6 lg:col-span-7 space-y-6 text-center">
+          <div className="lg:col-start-7 lg:col-span-7 space-y-6 text-center">
             <div className="inline-flex items-center space-x-2 bg-teal/10 border border-teal/30 px-4 py-1.5 rounded-full backdrop-blur-md">
-              <span className="flex h-2 w-2 rounded-full bg-teal animate-ping" />
               <span className="text-xs font-bold text-navy uppercase tracking-widest">
-                The Premium Choice of Purity
+                {dict.hero.badge}
               </span>
             </div>
 
@@ -46,15 +49,13 @@ export default function HeroSection() {
                 AVARIS
               </span>{" "}
               <br />
-              <span className="text-teal font-sans font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-5xl block mt-2">
-                Đẳng cấp của sự tinh khiết
+              <span className="text-teal font-serif font-bold text-3xl sm:text-4xl md:text-5xl lg:text-5xl block mt-2">
+                {dict.hero.title}
               </span>
             </h1>
 
             <p className="text-base sm:text-lg text-gray-700 max-w-2xl font-medium leading-relaxed">
-              Dây chuyền hiện đại ứng dụng công nghệ lọc RO tiên tiến từ Mỹ.
-              Giải pháp nước uống đóng chai thủy tinh sang trọng, bảo vệ sức
-              khỏe và nâng tầm hình ảnh bền vững của doanh nghiệp.
+              {dict.hero.paragraph}
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-4 pt-4">
@@ -62,7 +63,7 @@ export default function HeroSection() {
                 href="#san-pham"
                 className="flex items-center justify-center px-8 py-4 text-sm font-bold uppercase tracking-wider text-white bg-navy hover:bg-teal rounded-full shadow-xl hover:shadow-teal/20 transition-all duration-300 transform hover:-translate-y-1"
               >
-                Khám Phá Sản Phẩm
+                {dict.hero.cta}
                 <ArrowRight className="w-4 h-4 ml-2" />
               </a>
             </div>

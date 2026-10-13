@@ -1,9 +1,18 @@
 "use client";
 
 import { useState, type FormEvent, type ChangeEvent } from "react";
-import { CheckCircle, Globe, Mail, Phone } from "lucide-react";
+import { CheckCircle, ChevronDown, Globe, Mail, Phone } from "lucide-react";
+import { useDictionary } from "./LocaleProvider";
+
+/** Icon và đường dẫn cố định, phần chữ lấy từ từ điển theo thứ tự */
+const channelMeta = [
+  { icon: Globe, href: "https://avariswater.com" },
+  { icon: Mail, href: "mailto:info@avariswater.com" },
+  { icon: Phone, href: "tel:0868869910" },
+];
 
 export default function ContactSection() {
+  const dict = useDictionary();
   const [formData, setFormData] = useState({
     fullName: "",
     companyName: "",
@@ -42,64 +51,43 @@ export default function ContactSection() {
           <div className="lg:col-span-5 space-y-8">
             <div className="space-y-4">
               <span className="text-xs font-bold text-teal uppercase tracking-widest block">
-                Connect With Us
+                {dict.contact.eyebrow}
               </span>
               <h2 className="font-serif text-3xl sm:text-5xl font-bold text-navy">
-                Yêu Cầu Hợp Tác & Nhận Báo Giá
+                {dict.contact.title}
               </h2>
-              <p className="text-gray-600 text-sm">
-                Hãy để lại lời nhắn, đội ngũ tư vấn viên của chúng tôi sẽ liên
-                hệ tư vấn miễn phí chương trình chiết khấu và báo giá trong vòng
-                24 giờ.
-              </p>
+              <p className="text-gray-600 text-sm">{dict.contact.intro}</p>
             </div>
 
             <div className="space-y-6">
-              {[
-                {
-                  icon: Globe,
-                  label: "Website chính thức",
-                  href: "https://avariswater.com",
-                  text: "avariswater.com",
-                },
-                {
-                  icon: Mail,
-                  label: "Hộp thư điện tử",
-                  href: "mailto:info@avariswater.com",
-                  text: "info@avariswater.com",
-                },
-                {
-                  icon: Phone,
-                  label: "Hotline 24/7",
-                  href: "tel:0868869910",
-                  text: "0868.869.910",
-                },
-              ].map((item) => (
-                <div key={item.label} className="flex items-start gap-4">
-                  <div className="p-3 bg-cream rounded-2xl text-teal">
-                    <item.icon className="w-6 h-6" />
+              {dict.contact.channels.map((channel, index) => {
+                const { icon: Icon, href } = channelMeta[index];
+
+                return (
+                  <div key={channel.label} className="flex items-start gap-4">
+                    <div className="p-3 bg-cream rounded-2xl text-teal">
+                      <Icon className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <span className="block text-xs font-bold text-gray-400 uppercase">
+                        {channel.label}
+                      </span>
+                      <a
+                        href={href}
+                        target={href.startsWith("http") ? "_blank" : undefined}
+                        rel={
+                          href.startsWith("http")
+                            ? "noopener noreferrer"
+                            : undefined
+                        }
+                        className="font-bold text-navy hover:text-teal"
+                      >
+                        {channel.text}
+                      </a>
+                    </div>
                   </div>
-                  <div>
-                    <span className="block text-xs font-bold text-gray-400 uppercase">
-                      {item.label}
-                    </span>
-                    <a
-                      href={item.href}
-                      target={
-                        item.href.startsWith("http") ? "_blank" : undefined
-                      }
-                      rel={
-                        item.href.startsWith("http")
-                          ? "noopener noreferrer"
-                          : undefined
-                      }
-                      className="font-bold text-navy hover:text-teal"
-                    >
-                      {item.text}
-                    </a>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
@@ -110,17 +98,16 @@ export default function ContactSection() {
                   <CheckCircle className="w-10 h-10" />
                 </div>
                 <h3 className="font-serif text-2xl font-bold text-navy">
-                  Cảm ơn bạn đã gửi yêu cầu!
+                  {dict.contact.successTitle}
                 </h3>
                 <p className="text-gray-600 max-w-md mx-auto">
-                  Cảm ơn bạn đã tin tưởng AVARIS. Chuyên viên tư vấn của chúng
-                  tôi sẽ liên hệ lại trong thời gian sớm nhất.
+                  {dict.contact.successBody}
                 </p>
                 <button
                   onClick={() => setFormSubmitted(false)}
                   className="px-6 py-2 rounded-full bg-navy text-white text-xs font-bold hover:bg-teal transition-colors"
                 >
-                  Gửi yêu cầu mới
+                  {dict.contact.successAgain}
                 </button>
               </div>
             ) : (
@@ -128,7 +115,7 @@ export default function ContactSection() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-bold text-gray-700 mb-2">
-                      Họ & Tên của bạn
+                      {dict.contact.fieldName}
                     </label>
                     <input
                       type="text"
@@ -141,7 +128,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <label className="block text-sm font-bold text-gray-700 mb-2">
-                      Tên Công ty/Doanh nghiệp
+                      {dict.contact.fieldCompany}
                     </label>
                     <input
                       type="text"
@@ -155,7 +142,7 @@ export default function ContactSection() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-bold text-gray-700 mb-2">
-                      Địa chỉ Email
+                      {dict.contact.fieldEmail}
                     </label>
                     <input
                       type="email"
@@ -168,7 +155,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <label className="block text-sm font-bold text-gray-700 mb-2">
-                      Số Điện Thoại
+                      {dict.contact.fieldPhone}
                     </label>
                     <input
                       type="tel"
@@ -182,22 +169,28 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-2">
-                    Dòng sản phẩm bạn quan tâm
+                    {dict.contact.fieldProduct}
                   </label>
-                  <select
-                    name="productInterest"
-                    value={formData.productInterest}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 rounded-xl bg-white border border-gray-100 hover:border-teal/40 focus:outline-none focus:ring-2 focus:ring-teal text-gray-700 transition-all"
-                  >
-                    <option value="glass_450ml">
-                      Nước Tinh Khiết Đóng Chai Thủy Tinh 450ml
-                    </option>
-                  </select>
+                  <div className="relative">
+                    <select
+                      name="productInterest"
+                      value={formData.productInterest}
+                      onChange={handleInputChange}
+                      className="w-full appearance-none px-4 py-3 pr-11 rounded-xl bg-white border border-gray-100 hover:border-teal/40 focus:outline-none focus:ring-2 focus:ring-teal text-gray-700 transition-all cursor-pointer"
+                    >
+                      <option value="glass_450ml">
+                        {dict.contact.productOption}
+                      </option>
+                    </select>
+                    <ChevronDown
+                      aria-hidden="true"
+                      className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500"
+                    />
+                  </div>
                 </div>
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-2">
-                    Yêu cầu đặc biệt khác
+                    {dict.contact.fieldNotes}
                   </label>
                   <textarea
                     name="notes"
@@ -205,14 +198,14 @@ export default function ContactSection() {
                     onChange={handleInputChange}
                     rows={4}
                     className="w-full px-4 py-3 rounded-xl bg-white border border-gray-100 hover:border-teal/40 focus:outline-none focus:ring-2 focus:ring-teal text-gray-700 transition-all"
-                    placeholder="Số lượng chai dự kiến, yêu cầu đặc biệt về giao hàng, hoặc thời gian bàn giao..."
+                    placeholder={dict.contact.notesPlaceholder}
                   />
                 </div>
                 <button
                   type="submit"
                   className="w-full py-4 bg-navy hover:bg-teal text-white font-bold uppercase tracking-wider rounded-xl transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                 >
-                  Gửi yêu cầu báo giá ngay
+                  {dict.contact.submit}
                 </button>
               </form>
             )}

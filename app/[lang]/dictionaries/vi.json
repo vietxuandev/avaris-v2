@@ -1,0 +1,233 @@
+{
+  "meta": {
+    "title": "AVARIS | Premium Purity - Nước Tinh Khiết Đóng Chai Thủy Tinh",
+    "description": "AVARIS - Nhà phân phối nước tinh khiết đóng chai thủy tinh 450ml cao cấp. Công nghệ lọc RO từ Mỹ, đạt chuẩn ISO 22000:2018 & HACCP. Giải pháp bền vững cho khách sạn, resort, doanh nghiệp.",
+    "keywords": [
+      "nước tinh khiết",
+      "chai thủy tinh",
+      "AVARIS",
+      "nước đóng chai cao cấp",
+      "khách sạn",
+      "resort",
+      "nhà hàng",
+      "RO",
+      "HACCP",
+      "ISO 22000",
+      "bền vững",
+      "thủy tinh tái sử dụng"
+    ],
+    "ogTitle": "AVARIS | Premium Purity - Nước Tinh Khiết Đóng Chai Thủy Tinh Cao Cấp",
+    "ogDescription": "AVARIS - Nhà phân phối nước tinh khiết đóng chai thủy tinh 450ml cao cấp. Công nghệ lọc RO từ Mỹ, đạt chuẩn ISO 22000:2018 & HACCP.",
+    "twitterTitle": "AVARIS | Premium Purity - Nước Tinh Khiết Đóng Chai Thủy Tinh",
+    "twitterDescription": "Nước tinh khiết đóng chai thủy tinh 450ml cao cấp. Công nghệ lọc RO từ Mỹ, đạt chuẩn ISO 22000:2018 & HACCP.",
+    "imageAlt": "AVARIS Premium Purity"
+  },
+  "nav": {
+    "links": [
+      {
+        "href": "#cau-chuyen",
+        "label": "Câu Chuyện"
+      },
+      {
+        "href": "#san-pham",
+        "label": "Sản Phẩm"
+      },
+      {
+        "href": "#hanh-trinh",
+        "label": "Vòng Lặp Xanh"
+      },
+      {
+        "href": "#vi-sao-chon",
+        "label": "Tại Sao Avaris"
+      }
+    ],
+    "cta": "Yêu cầu báo giá",
+    "mobileCta": "Liên Hệ & Báo Giá",
+    "openMenu": "Mở menu",
+    "languageLabel": "Ngôn ngữ"
+  },
+  "hero": {
+    "badge": "The Premium Choice of Purity",
+    "title": "Đẳng cấp của sự tinh khiết",
+    "paragraph": "Dây chuyền hiện đại ứng dụng công nghệ lọc RO tiên tiến từ Mỹ. Giải pháp nước uống đóng chai thủy tinh sang trọng, bảo vệ sức khỏe và nâng tầm hình ảnh bền vững của doanh nghiệp.",
+    "cta": "Khám Phá Sản Phẩm",
+    "imageAlt": "Chai thủy tinh AVARIS 450ml - Nước tinh khiết cao cấp"
+  },
+  "storytelling": {
+    "eyebrow": "Avaris Storytelling",
+    "titleLine1": "Hành trình trở về với",
+    "titleLine2": "Sự Tinh Khiết Nguyên Bản",
+    "quote": "Giữa những dòng chảy đầu tiên nuôi dưỡng nền văn minh cổ đại, có một nơi mang tên Avaris - nơi nước không chỉ là sự sống, mà còn là ký ức của Trái Đất.",
+    "story": "AVARIS không chỉ là một chai nước. AVARIS là hành trình trở về với sự tinh khiết chưa bị chạm tới, trở về với thiên nhiên trong lành và trở về với trách nhiệm bảo vệ hành tinh xanh.",
+    "promiseBefore": "Được đóng trong chất liệu thủy tinh có thể tái sinh vô hạn, mỗi chai nước AVARIS không chỉ giữ trọn hương vị tự nhiên, mát lành của nước tinh khiết, mà còn giữ trọn một lời hứa:",
+    "promiseHighlight": "Uống Sạch – Sống Xanh",
+    "promiseAfter": "– Không để lại gì ngoài sự nguyên bản.",
+    "tagline": "Nước uống thủy tinh cao cấp"
+  },
+  "journey": {
+    "eyebrow": "VÒNG LẶP XANH HOÀN HẢO",
+    "title": "Hành Trình Bền Vững Của Chai Thủy Tinh AVARIS",
+    "intro": "Chúng tôi kiểm soát nghiêm ngặt từ khâu khử trùng vỏ chai đầu tiên cho đến khi nước sạch tinh khiết tới tay khách hàng, và cuối cùng thu hồi vỏ chai để tái sinh.",
+    "mission": "SỨ MỆNH XANH",
+    "hint": "Bấm vào từng bước trên vòng tròn để xem chi tiết quy trình",
+    "stepWord": "Bước",
+    "stepAriaSuffix": "xem chi tiết",
+    "steps": [
+      {
+        "title": "Quy trình súc rửa 5 bước & khử trùng bằng tia UV",
+        "desc": "Mỗi chai thủy tinh AVARIS sau khi thu hồi hoặc trước khi đi vào hệ thống chiết rót đều phải trải qua quy trình vệ sinh khép kín 5 bước nghiêm ngặt, kết hợp khử trùng bằng công nghệ tia cực tím UV tiên tiến. Điều này giúp loại bỏ hoàn toàn vi khuẩn và các tạp chất siêu nhỏ, mang lại sự tinh sạch tuyệt hảo.",
+        "accent": "Bảo vệ sức khỏe tuyệt đối - Đạt chứng nhận HACCP an toàn vệ sinh thực phẩm quốc tế."
+      },
+      {
+        "title": "Công nghệ lọc nước tiên tiến từ Mỹ",
+        "desc": "Hệ thống lọc ứng dụng công nghệ thẩm thấu ngược RO tiên tiến bậc nhất từ Hoa Kỳ. Giúp loại bỏ hoàn toàn kim loại nặng, hóa chất tồn dư, muối hòa tan, chỉ giữ lại những phân tử nước tinh sạch nhất, mang lại hương vị mềm mại, ngọt nhẹ tự nhiên.",
+        "accent": "Kiểm soát chất lượng đạt tiêu chuẩn khắt khe bậc nhất từ FDA Hoa Kỳ."
+      },
+      {
+        "title": "Chiết rót tự động trong môi trường vô trùng",
+        "desc": "Nước tinh khiết sau khi lọc được chuyển thẳng đến hệ thống chiết rót tự động khép kín hoàn toàn. Không gian chiết rót đạt cấp độ sạch tiêu chuẩn quốc tế, loại bỏ mọi nguy cơ tái nhiễm khuẩn từ không khí bên ngoài.",
+        "accent": "Công nghệ tự động hóa nâng cao tính đồng bộ và chất lượng tối ưu cho từng giọt nước."
+      },
+      {
+        "title": "Giao hàng đúng hạn đến đối tác",
+        "desc": "Chúng tôi thấu hiểu thời gian là vàng ngọc đối với hoạt động của doanh nghiệp bạn. AVARIS xây dựng đội ngũ vận tải tận tâm cùng quy trình logistics hiện đại, cam kết giao nước đúng giờ, đúng hẹn trực tiếp đến khách sạn, nhà hàng, resort hoặc văn phòng của bạn.",
+        "accent": "Dịch vụ cung ứng ổn định và hỗ trợ nhanh chóng khẩn cấp 24/7."
+      },
+      {
+        "title": "Trải nghiệm nước uống cao cấp",
+        "desc": "Lần đầu tiên, việc uống nước không chỉ để giải khát mà trở thành một nghệ thuật thưởng thức đích thực. Thiết kế chai thủy tinh thanh nhã, giữ lạnh tối ưu mang lại sự mát lành sảng khoái tuyệt hảo cho từng cuộc hẹn hay bữa tiệc cao cấp.",
+        "accent": "Chiếc chai thanh lịch tô điểm thêm cho sự sang trọng nơi bàn tiệc hay phòng nghỉ khách sạn."
+      },
+      {
+        "title": "Thu hồi để tái sử dụng bền vững",
+        "desc": "Sau khi sử dụng xong, vỏ chai thủy tinh sẽ được chúng tôi thu gom thông qua hệ thống quản lý chuyên nghiệp để rửa sạch và tái sản xuất tuần hoàn. Không một mảnh thủy tinh hay vỏ nhựa nào bị bỏ lại ngoài tự nhiên.",
+        "accent": "Thể hiện mạnh mẽ cam kết xanh bền vững và giảm thiểu tối đa áp lực ô nhiễm rác thải nhựa."
+      }
+    ],
+    "stepAlts": [
+      "Khử trùng & Súc rửa UV",
+      "Công nghệ lọc RO tiên tiến",
+      "Chiết rót vô trùng",
+      "Giao hàng đúng hẹn",
+      "Trải nghiệm cao cấp",
+      "Thu hồi & Tái sử dụng"
+    ],
+    "videoAria": "Video TVC giới thiệu hành trình sản xuất nước uống thủy tinh AVARIS",
+    "videoFallback": "Trình duyệt của bạn không hỗ trợ thẻ video.",
+    "videoCaption": "TVC AVARIS",
+    "close": "Đóng",
+    "closeDetail": "Đóng chi tiết",
+    "prev": "Bước trước",
+    "next": "Bước tiếp"
+  },
+  "products": {
+    "eyebrow": "Danh mục sản phẩm chính",
+    "titleLine1": "Nước Tinh Khiết",
+    "titleLine2": "Đóng Chai Thủy Tinh",
+    "volume": "450ml",
+    "volumeLabel1": "Dung tích tiêu chuẩn",
+    "volumeLabel2": "cho khách sạn & nhà hàng",
+    "paragraphBefore": "Chai thủy tinh",
+    "paragraphAfter": "450ml được thiết kế tinh tế, sang trọng, phù hợp với không gian cao cấp. Chất liệu thủy tinh tái sử dụng giữ trọn hương vị tinh khiết, mát lành của nước, đồng thời thể hiện cam kết phát triển bền vững của doanh nghiệp.",
+    "specs": [
+      {
+        "label": "Chất liệu",
+        "value": "Thủy tinh cao cấp"
+      },
+      {
+        "label": "Đóng két",
+        "value": "24 chai / két"
+      },
+      {
+        "label": "Công nghệ lọc",
+        "value": "RO tiên tiến từ Mỹ"
+      },
+      {
+        "label": "Chứng nhận",
+        "value": "ISO 22000 & HACCP"
+      }
+    ],
+    "imageAlts": [
+      "Chai thủy tinh AVARIS 450ml trong phòng khách sạn cao cấp",
+      "Chai thủy tinh AVARIS 450ml tại khu vực lounge sang trọng",
+      "Chai thủy tinh AVARIS 450ml trên bàn tiệc nhà hàng cao cấp",
+      "Chai thủy tinh AVARIS 450ml trong phòng họp doanh nghiệp"
+    ]
+  },
+  "whyChoose": {
+    "eyebrow": "Why Us",
+    "title": "Đồng hành cùng doanh nghiệp xây dựng hình ảnh bền vững",
+    "paragraph": "AVARIS không chỉ cung cấp giải pháp nước sạch cao cấp mà còn là đối tác chiến lược giúp doanh nghiệp truyền tải thông điệp bảo vệ môi trường đến khách hàng.",
+    "cards": [
+      {
+        "title": "An Toàn Tuyệt Đối",
+        "desc": "Sản phẩm hoàn toàn không chứa BPA, phthalates hay bất kỳ chất độc hại từ hạt nhựa, bảo đảm tối đa sức khỏe cho khách hàng của bạn."
+      },
+      {
+        "title": "Trách Nhiệm Xã Hội",
+        "desc": "Thể hiện mạnh mẽ cam kết xanh của doanh nghiệp, góp phần cắt giảm rác thải nhựa một lần ra đại dương và môi trường sống."
+      },
+      {
+        "title": "Trải Nghiệm Cao Cấp",
+        "desc": "Kiểu dáng chai thủy tinh châu Âu tinh tế, giữ lạnh cực lâu, nâng tầm trải nghiệm cho khách sạn, nhà hàng sang trọng."
+      },
+      {
+        "title": "Giải Pháp Toàn Diện",
+        "desc": "Chương trình quản lý và thu hồi vỏ chai thông minh, giúp doanh nghiệp tiết kiệm chi phí, dịch vụ hỗ trợ chu đáo 24/7."
+      }
+    ]
+  },
+  "certifications": {
+    "title": "Tiêu Chuẩn Chất Lượng Quốc Tế",
+    "paragraph": "Chúng tôi tuân thủ nghiêm ngặt các tiêu chuẩn khắt khe nhất về vệ sinh an toàn thực phẩm.",
+    "imageAlts": [
+      "ISO 9001:2015",
+      "HACCP CODEX"
+    ]
+  },
+  "contact": {
+    "eyebrow": "Connect With Us",
+    "title": "Yêu Cầu Hợp Tác & Nhận Báo Giá",
+    "intro": "Hãy để lại lời nhắn, đội ngũ tư vấn viên của chúng tôi sẽ liên hệ tư vấn miễn phí chương trình chiết khấu và báo giá trong vòng 24 giờ.",
+    "channels": [
+      {
+        "label": "Website chính thức",
+        "text": "avariswater.com"
+      },
+      {
+        "label": "Hộp thư điện tử",
+        "text": "info@avariswater.com"
+      },
+      {
+        "label": "Hotline 24/7",
+        "text": "0868.869.910"
+      }
+    ],
+    "successTitle": "Cảm ơn bạn đã gửi yêu cầu!",
+    "successBody": "Cảm ơn bạn đã tin tưởng AVARIS. Chuyên viên tư vấn của chúng tôi sẽ liên hệ lại trong thời gian sớm nhất.",
+    "successAgain": "Gửi yêu cầu mới",
+    "fieldName": "Họ & Tên của bạn",
+    "fieldCompany": "Tên Công ty/Doanh nghiệp",
+    "fieldEmail": "Địa chỉ Email",
+    "fieldPhone": "Số Điện Thoại",
+    "fieldProduct": "Dòng sản phẩm bạn quan tâm",
+    "productOption": "Nước Tinh Khiết Đóng Chai Thủy Tinh 450ml",
+    "fieldNotes": "Yêu cầu đặc biệt khác",
+    "notesPlaceholder": "Số lượng chai dự kiến, yêu cầu đặc biệt về giao hàng, hoặc thời gian bàn giao...",
+    "submit": "Gửi yêu cầu báo giá ngay"
+  },
+  "footer": {
+    "tagline": "Thương hiệu nước uống đóng chai thủy tinh tuần hoàn bền vững vì môi trường.",
+    "copyright": "© 2026 AVARIS WATER. Bảo lưu mọi quyền.",
+    "categoriesHeading": "Danh Mục",
+    "contactHeading": "Liên Hệ",
+    "website": "Website: avariswater.com",
+    "email": "Email: info@avariswater.com",
+    "hotline": "Hotline: 0868.869.910",
+    "discount": "Chính sách chiết khấu & Hợp tác B2B",
+    "support": "Đội ngũ CSKH chuyên nghiệp 24/7",
+    "hotlineCallout": "Đường dây nóng: 0868.869.910",
+    "production": "Hệ thống sản xuất & lọc nước công nghệ Mỹ đạt chuẩn quốc tế.",
+    "service": "Dịch vụ khách hàng xuất sắc 24/7."
+  }
+}

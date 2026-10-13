@@ -1,0 +1,233 @@
+{
+  "meta": {
+    "title": "AVARIS | Premium Purity - Still Water in Glass Bottles",
+    "description": "AVARIS supplies premium 450ml still water in reusable glass bottles. Advanced American RO filtration, ISO 22000:2018 & HACCP certified. A sustainable choice for hotels, resorts and businesses.",
+    "keywords": [
+      "still water",
+      "glass bottle",
+      "AVARIS",
+      "premium bottled water",
+      "hotel",
+      "resort",
+      "restaurant",
+      "RO",
+      "HACCP",
+      "ISO 22000",
+      "sustainable",
+      "reusable glass"
+    ],
+    "ogTitle": "AVARIS | Premium Purity - Premium Still Water in Glass Bottles",
+    "ogDescription": "AVARIS supplies premium 450ml still water in reusable glass bottles. Advanced American RO filtration, ISO 22000:2018 & HACCP certified.",
+    "twitterTitle": "AVARIS | Premium Purity - Still Water in Glass Bottles",
+    "twitterDescription": "Premium 450ml still water in glass bottles. Advanced American RO filtration, ISO 22000:2018 & HACCP certified.",
+    "imageAlt": "AVARIS Premium Purity"
+  },
+  "nav": {
+    "links": [
+      {
+        "href": "#cau-chuyen",
+        "label": "Our Story"
+      },
+      {
+        "href": "#san-pham",
+        "label": "Products"
+      },
+      {
+        "href": "#hanh-trinh",
+        "label": "Green Loop"
+      },
+      {
+        "href": "#vi-sao-chon",
+        "label": "Why Avaris"
+      }
+    ],
+    "cta": "Request a Quote",
+    "mobileCta": "Contact & Get a Quote",
+    "openMenu": "Open menu",
+    "languageLabel": "Language"
+  },
+  "hero": {
+    "badge": "The Premium Choice of Purity",
+    "title": "The Pinnacle of Purity",
+    "paragraph": "A state-of-the-art line powered by advanced American RO filtration. Luxurious glass-bottled drinking water that protects your health and elevates your company's sustainable image.",
+    "cta": "Explore Products",
+    "imageAlt": "AVARIS 450ml glass bottle - premium still water"
+  },
+  "storytelling": {
+    "eyebrow": "Avaris Storytelling",
+    "titleLine1": "A journey back to",
+    "titleLine2": "Pristine Purity",
+    "quote": "Among the first waters that nourished ancient civilisations, there was a place called Avaris - where water was not only life, but the memory of the Earth itself.",
+    "story": "AVARIS is more than a bottle of water. AVARIS is a journey back to untouched purity, back to unspoiled nature, and back to the responsibility of protecting our blue planet.",
+    "promiseBefore": "Sealed in glass that can be reborn endlessly, every bottle of AVARIS preserves not only the fresh, natural taste of pure water, but also a promise:",
+    "promiseHighlight": "Drink Clean – Live Green",
+    "promiseAfter": "– leaving behind nothing but purity.",
+    "tagline": "Premium glass-bottled water"
+  },
+  "journey": {
+    "eyebrow": "THE PERFECT GREEN LOOP",
+    "title": "The Sustainable Journey of an AVARIS Glass Bottle",
+    "intro": "We control every step with rigour - from sterilising the first returned bottle to the moment pure water reaches your hands, and finally to collecting that bottle so it can be reborn.",
+    "mission": "GREEN MISSION",
+    "hint": "Click any step on the circle to see how the process works",
+    "stepWord": "Step",
+    "stepAriaSuffix": "view details",
+    "steps": [
+      {
+        "title": "5-step rinsing & UV sterilisation",
+        "desc": "Every AVARIS glass bottle - whether returned or about to enter the filling line - goes through a sealed five-step cleaning process combined with advanced ultraviolet (UV) sterilisation. This removes bacteria and ultra-fine impurities completely, delivering impeccable cleanliness.",
+        "accent": "Absolute protection for your health - certified to international HACCP food safety standards."
+      },
+      {
+        "title": "Advanced American water filtration",
+        "desc": "Our system applies the most advanced reverse osmosis (RO) technology from the United States. Heavy metals, chemical residues and dissolved salts are removed entirely, leaving only the purest water molecules with a soft, naturally sweet taste.",
+        "accent": "Quality control meeting the most stringent standards of the US FDA."
+      },
+      {
+        "title": "Automated filling in a sterile environment",
+        "desc": "Once filtered, the pure water flows directly into a fully enclosed automated filling system. The filling area meets international cleanroom standards, eliminating any risk of recontamination from outside air.",
+        "accent": "Automation raises consistency and delivers optimal quality in every single drop."
+      },
+      {
+        "title": "On-time delivery to our partners",
+        "desc": "We understand that time is precious to your business. AVARIS has built a dedicated delivery team and a modern logistics process, promising punctual delivery straight to your hotel, restaurant, resort or office.",
+        "accent": "Reliable supply with rapid emergency support, 24/7."
+      },
+      {
+        "title": "A premium drinking experience",
+        "desc": "For the first time, drinking water is not merely about quenching thirst - it becomes a genuine art of enjoyment. An elegant glass design with superior chill retention brings refreshing delight to every high-end meeting or banquet.",
+        "accent": "An elegant bottle that adds to the refinement of any banquet table or hotel room."
+      },
+      {
+        "title": "Collected for sustainable reuse",
+        "desc": "Once used, every glass bottle is collected through our professional management system to be washed and regenerated in a circular loop. No shard of glass and no plastic shell is left behind in nature.",
+        "accent": "A powerful statement of our green commitment, cutting the pressure of plastic waste to a minimum."
+      }
+    ],
+    "stepAlts": [
+      "UV sterilisation & rinsing",
+      "Advanced RO filtration",
+      "Sterile filling",
+      "On-time delivery",
+      "Premium experience",
+      "Collect & reuse"
+    ],
+    "videoAria": "AVARIS TV commercial introducing the journey of our glass-bottled water",
+    "videoFallback": "Your browser does not support the video tag.",
+    "videoCaption": "AVARIS TVC",
+    "close": "Close",
+    "closeDetail": "Close details",
+    "prev": "Previous step",
+    "next": "Next step"
+  },
+  "products": {
+    "eyebrow": "Our core product",
+    "titleLine1": "Pure Still Water",
+    "titleLine2": "in Glass Bottles",
+    "volume": "450ml",
+    "volumeLabel1": "Standard volume",
+    "volumeLabel2": "for hotels & restaurants",
+    "paragraphBefore": "The",
+    "paragraphAfter": "450ml glass bottle is exquisitely designed for premium settings. Reusable glass keeps the water pure and refreshing, while expressing your company's commitment to sustainable development.",
+    "specs": [
+      {
+        "label": "Material",
+        "value": "Premium glass"
+      },
+      {
+        "label": "Packaging",
+        "value": "24 bottles / crate"
+      },
+      {
+        "label": "Filtration",
+        "value": "Advanced RO from the USA"
+      },
+      {
+        "label": "Certification",
+        "value": "ISO 22000 & HACCP"
+      }
+    ],
+    "imageAlts": [
+      "AVARIS 450ml glass bottle in a premium hotel room",
+      "AVARIS 450ml glass bottle in a luxurious lounge",
+      "AVARIS 450ml glass bottle on a fine-dining table",
+      "AVARIS 450ml glass bottle in a corporate meeting room"
+    ]
+  },
+  "whyChoose": {
+    "eyebrow": "Why Us",
+    "title": "Partnering with businesses to build a sustainable image",
+    "paragraph": "AVARIS does more than supply premium pure water - we are a strategic partner that helps your business carry its environmental message to your customers.",
+    "cards": [
+      {
+        "title": "Absolute Safety",
+        "desc": "Our product contains no BPA, no phthalates and no harmful substances from plastic resin, protecting your guests' health to the fullest."
+      },
+      {
+        "title": "Social Responsibility",
+        "desc": "A powerful expression of your company's green commitment, helping cut single-use plastic waste before it reaches the ocean and our living environment."
+      },
+      {
+        "title": "Premium Experience",
+        "desc": "A refined European glass design with exceptional chill retention, elevating the experience in luxury hotels and restaurants."
+      },
+      {
+        "title": "End-to-end Solution",
+        "desc": "A smart bottle management and collection programme that saves your business money, backed by attentive 24/7 support."
+      }
+    ]
+  },
+  "certifications": {
+    "title": "International Quality Standards",
+    "paragraph": "We strictly comply with the most demanding standards of food hygiene and safety.",
+    "imageAlts": [
+      "ISO 9001:2015",
+      "HACCP CODEX"
+    ]
+  },
+  "contact": {
+    "eyebrow": "Connect With Us",
+    "title": "Partnership & Quotation Requests",
+    "intro": "Leave us a message and our consultants will get back to you free of charge with our discount programme and a quotation within 24 hours.",
+    "channels": [
+      {
+        "label": "Official website",
+        "text": "avariswater.com"
+      },
+      {
+        "label": "Email",
+        "text": "info@avariswater.com"
+      },
+      {
+        "label": "Hotline 24/7",
+        "text": "0868.869.910"
+      }
+    ],
+    "successTitle": "Thank you for your request!",
+    "successBody": "Thank you for trusting AVARIS. One of our consultants will contact you as soon as possible.",
+    "successAgain": "Send another request",
+    "fieldName": "Your full name",
+    "fieldCompany": "Company / business name",
+    "fieldEmail": "Email address",
+    "fieldPhone": "Phone number",
+    "fieldProduct": "Product line you are interested in",
+    "productOption": "AVARIS 450ml still water in glass bottles",
+    "fieldNotes": "Other special requests",
+    "notesPlaceholder": "Estimated bottle quantity, special delivery requirements, or preferred handover time...",
+    "submit": "Send my quotation request"
+  },
+  "footer": {
+    "tagline": "A circular, sustainable glass-bottled drinking water brand for the environment.",
+    "copyright": "© 2026 AVARIS WATER. All rights reserved.",
+    "categoriesHeading": "Categories",
+    "contactHeading": "Contact",
+    "website": "Website: avariswater.com",
+    "email": "Email: info@avariswater.com",
+    "hotline": "Hotline: 0868.869.910",
+    "discount": "Discount policy & B2B partnership",
+    "support": "Professional customer care team, 24/7",
+    "hotlineCallout": "Hotline: 0868.869.910",
+    "production": "Production and water filtration system using American technology, meeting international standards.",
+    "service": "Outstanding customer service, 24/7."
+  }
+}

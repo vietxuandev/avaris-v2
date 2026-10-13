@@ -2,8 +2,11 @@
 
 import { BookOpen } from "lucide-react";
 import FadeInSection from "./FadeInSection";
+import { useDictionary } from "./LocaleProvider";
 
 export default function StorytellingSection() {
+  const dict = useDictionary();
+
   return (
     <section
       id="cau-chuyen"
@@ -17,14 +20,14 @@ export default function StorytellingSection() {
           <div className="inline-flex items-center space-x-2 text-teal">
             <BookOpen className="w-5 h-5" />
             <span className="text-xs font-bold uppercase tracking-widest">
-              Avaris Storytelling
+              {dict.storytelling.eyebrow}
             </span>
           </div>
 
           <h2 className="font-serif text-3xl sm:text-5xl font-bold text-navy leading-snug">
-            Hành trình trở về với <br />
+            {dict.storytelling.titleLine1} <br />
             <span className="text-teal italic font-medium">
-              Sự Tinh Khiết Nguyên Bản
+              {dict.storytelling.titleLine2}
             </span>
           </h2>
 
@@ -33,21 +36,17 @@ export default function StorytellingSection() {
               &ldquo;
             </span>
             <p className="text-base sm:text-lg text-gray-700 leading-relaxed font-serif italic">
-              Giữa những dòng chảy đầu tiên nuôi dưỡng nền văn minh cổ đại, có
-              một nơi mang tên Avaris - nơi nước không chỉ là sự sống, mà còn là
-              ký ức của Trái Đất.
+              {dict.storytelling.quote}
             </p>
             <p className="text-sm sm:text-base text-gray-600 leading-relaxed font-medium">
-              AVARIS không chỉ là một chai nước. AVARIS là hành trình trở về với
-              sự tinh khiết chưa bị chạm tới, trở về với thiên nhiên trong lành
-              và trở về với trách nhiệm bảo vệ hành tinh xanh.
+              {dict.storytelling.story}
             </p>
             <p className="text-sm sm:text-base text-gray-600 leading-relaxed font-medium">
-              Được đóng trong chất liệu thủy tinh có thể tái sinh vô hạn, mỗi
-              chai nước AVARIS không chỉ giữ trọn hương vị tự nhiên, mát lành
-              của nước tinh khiết, mà còn giữ trọn một lời hứa:{" "}
-              <span className="text-navy font-bold">Uống Sạch – Sống Xanh</span>{" "}
-              – Không để lại gì ngoài sự nguyên bản.
+              {dict.storytelling.promiseBefore}{" "}
+              <span className="text-navy font-bold">
+                {dict.storytelling.promiseHighlight}
+              </span>{" "}
+              {dict.storytelling.promiseAfter}
             </p>
             <span className="absolute -bottom-16 right-10 font-serif text-7xl text-teal/20">
               &rdquo;
@@ -57,7 +56,7 @@ export default function StorytellingSection() {
           <div className="pt-4">
             <p className="font-avaris text-xl text-navy">AVARIS</p>
             <p className="text-xs text-gray-500 uppercase tracking-widest mt-1">
-              Nước uống thủy tinh cao cấp
+              {dict.storytelling.tagline}
             </p>
           </div>
         </FadeInSection>

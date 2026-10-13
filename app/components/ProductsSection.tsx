@@ -7,10 +7,13 @@ import imgSuite from "../assets/images/DSC03951.jpg";
 import imgLounge from "../assets/images/DSC04063.jpg";
 import imgDining from "../assets/images/DSC04120.jpg";
 import imgMeeting from "../assets/images/DSC04247.jpg";
+import { useDictionary } from "./LocaleProvider";
 
 export default function ProductsSection() {
+  const dict = useDictionary();
+
   return (
-    <section id="san-pham" className="py-24 bg-white relative">
+    <section id="san-pham" className="py-24 bg-cream relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <FadeInSection className="lg:col-span-7">
@@ -19,7 +22,7 @@ export default function ProductsSection() {
                 <div className="relative rounded-2xl overflow-hidden shadow-md hover:shadow-2xl hover:scale-[1.03] transition-all duration-500 aspect-square ml-auto w-4/5 cursor-pointer group">
                   <Image
                     src={imgSuite}
-                    alt="Chai thủy tinh AVARIS 450ml trong phòng khách sạn cao cấp"
+                    alt={dict.products.imageAlts[0]}
                     fill
                     sizes="50vw"
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
@@ -28,7 +31,7 @@ export default function ProductsSection() {
                 <div className="relative rounded-2xl overflow-hidden shadow-md hover:shadow-2xl hover:scale-[1.03] transition-all duration-500 aspect-square cursor-pointer group">
                   <Image
                     src={imgLounge}
-                    alt="Chai thủy tinh AVARIS 450ml tại khu vực lounge sang trọng"
+                    alt={dict.products.imageAlts[1]}
                     fill
                     sizes="50vw"
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
@@ -39,7 +42,7 @@ export default function ProductsSection() {
                 <div className="relative rounded-2xl overflow-hidden shadow-md hover:shadow-2xl hover:scale-[1.03] transition-all duration-500 aspect-square cursor-pointer group">
                   <Image
                     src={imgDining}
-                    alt="Chai thủy tinh AVARIS 450ml trên bàn tiệc nhà hàng cao cấp"
+                    alt={dict.products.imageAlts[2]}
                     fill
                     sizes="50vw"
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
@@ -48,7 +51,7 @@ export default function ProductsSection() {
                 <div className="relative rounded-2xl overflow-hidden shadow-md hover:shadow-2xl hover:scale-[1.03] transition-all duration-500 aspect-square mr-auto w-4/5 cursor-pointer group">
                   <Image
                     src={imgMeeting}
-                    alt="Chai thủy tinh AVARIS 450ml trong phòng họp doanh nghiệp"
+                    alt={dict.products.imageAlts[3]}
                     fill
                     sizes="50vw"
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
@@ -64,39 +67,33 @@ export default function ProductsSection() {
           >
             <div className="space-y-1">
               <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block">
-                Danh mục sản phẩm chính
+                {dict.products.eyebrow}
               </span>
               <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-navy leading-tight">
-                Nước Tinh Khiết <br />
-                Đóng Chai Thủy Tinh
+                {dict.products.titleLine1} <br />
+                {dict.products.titleLine2}
               </h3>
             </div>
 
             <div className="flex items-center gap-3">
-              <span className="text-3xl font-black text-teal">450ml</span>
+              <span className="text-3xl font-black text-teal">
+                {dict.products.volume}
+              </span>
               <span className="h-8 w-px bg-gray-300" />
               <span className="text-sm text-gray-500 leading-tight">
-                Dung tích tiêu chuẩn <br />
-                cho khách sạn & nhà hàng
+                {dict.products.volumeLabel1} <br />
+                {dict.products.volumeLabel2}
               </span>
             </div>
 
             <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-              Chai thủy tinh{" "}
+              {dict.products.paragraphBefore}{" "}
               <span className="text-navy font-bold font-avaris text-lg sm:text-xl">AVARIS</span>{" "}
-              450ml được thiết kế tinh tế, sang trọng, phù hợp với không gian
-              cao cấp. Chất liệu thủy tinh tái sử dụng giữ trọn hương vị tinh
-              khiết, mát lành của nước, đồng thời thể hiện cam kết phát triển
-              bền vững của doanh nghiệp.
+              {dict.products.paragraphAfter}
             </p>
 
             <div className="grid grid-cols-2 gap-4 pt-2">
-              {[
-                { label: "Chất liệu", value: "Thủy tinh cao cấp" },
-                { label: "Đóng két", value: "24 chai / két" },
-                { label: "Công nghệ lọc", value: "RO tiên tiến từ Mỹ" },
-                { label: "Chứng nhận", value: "ISO 22000 & HACCP" },
-              ].map((item) => (
+              {dict.products.specs.map((item) => (
                 <div key={item.label} className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-teal/10 text-teal flex items-center justify-center shrink-0">
                     <Check className="w-5 h-5 font-bold" />
